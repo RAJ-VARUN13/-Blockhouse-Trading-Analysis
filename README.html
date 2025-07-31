@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockhouse Trading Analysis - README</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            padding: 16px;
+            overflow: auto;
+        }
+        code {
+            font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+        }
+        h1, h2, h3, h4 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+        h1 {
+            padding-bottom: 0.3em;
+            font-size: 2em;
+            border-bottom: 1px solid #eaecef;
+        }
+        h2 {
+            padding-bottom: 0.3em;
+            font-size: 1.5em;
+            border-bottom: 1px solid #eaecef;
+        }
+        h3 {
+            font-size: 1.25em;
+        }
+        .highlight {
+            background-color: #fffbdd;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #ffd33d;
+            margin: 1rem 0;
+        }
+        .step {
+            background-color: #f0f7ff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #0366d6;
+        }
+        .command {
+            background-color: #2d333b;
+            color: #e6edf3;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<div class="bg-white p-8 rounded-lg shadow-md">
+    <h1>Blockhouse Trading Analysis</h1>
+
+    <p class="text-lg mb-4">
+        This repository contains the analysis and optimization framework for executing large stock orders while minimizing market impact, as part of the Blockhouse Work Trial Task.
+    </p>
+
+    <div class="highlight">
+        <strong><i class="fas fa-lightbulb"></i> Purpose:</strong> Develop an optimal execution strategy that splits a large buy order across multiple time periods to minimize slippage.
+    </div>
+
+    <h2><i class="fas fa-folder-open"></i> Project Structure</h2>
+    <pre>
+Blockhouse-Trading-Analysis/
+├── analysis.py                  # Main analysis code
+├── Task1_Impact_Analysis.html   # Report on market impact modeling
+├── Task2_Optimization_Framework.html  # Mathematical optimization framework
+├── data/                        # Sample data files
+│   ├── SOUN_sample.csv          # SOUN stock data
+│   ├── FROG_sample.csv          # FROG stock data
+│   └── CRWV_sample.csv          # CRWV stock data
+└── README.md                    # This file
+</pre>
+
+    <h2><i class="fas fa-cogs"></i> Requirements</h2>
+    <p>This project requires the following Python libraries:</p>
+    <pre>
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scipy
+- scikit-learn
+</pre>
+
+    <p>You can install these with:</p>
+    <div class="command">
+        pip install pandas numpy matplotlib seaborn scipy scikit-learn
+    </div>
+
+    <h2><i class="fas fa-play-circle"></i> How to Run the Analysis</h2>
+    
+    <div class="step">
+        <strong>Step 1: Clone this repository</strong>
+        <div class="command">
+            git clone https://github.com/YOUR_USERNAME/Blockhouse-Trading-Analysis.git<br>
+            cd Blockhouse-Trading-Analysis
+        </div>
+    </div>
+
+    <div class="step">
+        <strong>Step 2: Run the analysis script</strong>
+        <div class="command">
+            python analysis.py
+        </div>
+        <p class="mt-2">This will generate visualizations and results based on the sample data.</p>
+    </div>
+
+    <h2><i class="fas fa-database"></i> Data Description</h2>
+    <p>This project uses high-frequency limit order book data for three stocks:</p>
+    <ul class="list-disc pl-6">
+        <li><strong>SOUN</strong> - Order book data with bid/ask prices at multiple levels</li>
+        <li><strong>FROG</strong> - Order book data with bid/ask prices at multiple levels</li>
+        <li><strong>CRWV</strong> - Order book data with bid/ask prices at multiple levels</li>
+    </ul>
+
+    <p class="mt-3">The data files contain the following columns:</p>
+    <ul class="list-disc pl-6">
+        <li>ts_event, ts_recv - Timestamps for events</li>
+        <li>rtype - Message type</li>
+        <li>publisher_instrument_action - Trading action</li>
+        <li>side, depth - Order book position information</li>
+        <li>price, size - Order price and size</li>
+        <li>bid_px_XX, ask_px_XX - Bid and ask prices at different levels</li>
+        <li>bid_sz_XX, ask_sz_XX - Bid and ask sizes at different levels</li>
+    </ul>
+
+    <h2><i class="fas fa-code-branch"></i> Methodology</h2>
+    <p>This project addresses two main components:</p>
+    
+    <h3>1. Market Impact Modeling</h3>
+    <p>Analysis of whether linear models (g(x) = βx) are sufficient or if non-linear models perform better at predicting price impact when executing orders.</p>
+    
+    <h3>2. Optimization Framework</h3>
+    <p>Mathematical algorithm to determine optimal order sizes (x<sub>i</sub>) across trading periods to minimize overall price impact while executing S total shares.</p>
+
+    <h2><i class="fas fa-pencil-alt"></i> How to Use Your Own Data</h2>
+    
+    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-4">
+        <p class="text-blue-800 font-medium">Follow these simple steps to use your own data files:</p>
+    </div>
+
+    <div class="step">
+        <strong>Step 1: Prepare your data files</strong>
+        <p>Ensure your CSV files have the same structure as the sample data:</p>
+        <ul class="list-disc pl-6">
+            <li>Must contain columns for timestamps, price, size, and bid/ask levels</li>
+            <li>Save your files with clear names (e.g., STOCK1.csv, STOCK2.csv)</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <strong>Step 2: Update file paths in analysis.py</strong>
+        <p>Open analysis.py and find these lines (around line 30-40):</p>
+        <pre>
+# File paths to the sample data
+SOUN_FILE = 'data/SOUN_sample.csv'
+FROG_FILE = 'data/FROG_sample.csv'
+CRWV_FILE = 'data/CRWV_sample.csv'
+</pre>
+        <p>Change these to point to your own files:</p>
+        <pre>
+# File paths to your data
+SOUN_FILE = 'path/to/your/STOCK1.csv'
+FROG_FILE = 'path/to/your/STOCK2.csv'
+CRWV_FILE = 'path/to/your/STOCK3.csv'
+</pre>
+    </div>
+
+    <div class="step">
+        <strong>Step 3: Run the analysis with your data</strong>
+        <div class="command">
+            python analysis.py
+        </div>
+        <p class="mt-2">This will generate new results based on your data files.</p>
+    </div>
+
+    <div class="step">
+        <strong>Step 4: Update the reports (if needed)</strong>
+        <p>If you need to update the HTML reports with your new results:</p>
+        <ol class="list-decimal pl-6">
+            <li>Open Task1_Impact_Analysis.html in a text editor</li>
+            <li>Find the "Results" section</li>
+            <li>Replace the R² values and other statistics with your new findings</li>
+            <li>Save the file</li>
+            <li>Repeat for Task2_Optimization_Framework.html</li>
+        </ol>
+    </div>
+
+    <h2><i class="fas fa-tasks"></i> Task Description</h2>
+    <p>The Blockhouse Work Trial Task focuses on two main deliverables:</p>
+    
+    <h3>Task 1: Impact Function Modeling (1-2 pages)</h3>
+    <ul class="list-disc pl-6">
+        <li>Model the temporary impact function g<sub>t</sub>(x)</li>
+        <li>Analyze whether linear models are sufficient or oversimplified</li>
+        <li>Use data from the 3 provided stock tickers</li>
+    </ul>
+    
+    <h3>Task 2: Mathematical Framework (1-2 pages)</h3>
+    <ul class="list-disc pl-6">
+        <li>Formulate a mathematical algorithm to determine optimal x<sub>i</sub> for each time period</li>
+        <li>Ensure the constraint Σx<sub>i</sub> = S is satisfied</li>
+        <li>Describe techniques and tools for solving this optimization problem</li>
+    </ul>
+
+    <h2><i class="fas fa-chart-line"></i> Results Summary</h2>
+    <p>Key findings from the analysis:</p>
+    <ul class="list-disc pl-6">
+        <li>Non-linear models outperform linear models for market impact prediction (R² = 0.0081 vs 0.0063)</li>
+        <li>Adaptive execution strategy reduces impact by 99.73% compared to TWAP</li>
+        <li>Market impact follows a U-shaped pattern throughout the trading day</li>
+    </ul>
+
+    <h2><i class="fas fa-question-circle"></i> Need Help?</h2>
+    <p>If you encounter any issues:</p>
+    <ol class="list-decimal pl-6">
+        <li>Check that your data files have the correct format and column names</li>
+        <li>Ensure all required Python packages are installed</li>
+        <li>Try running with the sample data first to verify the code works</li>
+    </ol>
+
+    <hr class="my-6">
+    <p class="text-gray-600 text-center">
+        <i class="fas fa-code"></i> Blockhouse Trading Analysis - Quantitative Trading Strategy Project
+    </p>
+</div>
+
+</body>
+</html>
